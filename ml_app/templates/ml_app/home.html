@@ -1,0 +1,56 @@
+{% extends 'ml_app/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center mb-4">Machine Learning Models</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Simple Linear Regression</h5>
+                        <p class="card-text">Predict electricity consumption based on input features.</p>
+                        <a href="{% url 'simple_linear' %}" class="btn btn-primary">Try it</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Multiple Linear Regression</h5>
+                        <p class="card-text">Predict health risk based on multiple input features.</p>
+                        <a href="{% url 'multiple_linear' %}" class="btn btn-primary">Try it</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Polynomial Regression</h5>
+                        <p class="card-text">Predict fuel efficiency using polynomial features.</p>
+                        <a href="{% url 'polynomial' %}" class="btn btn-primary">Try it</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Logistic Regression</h5>
+                        <p class="card-text">Predict diabetes based on health indicators.</p>
+                        <a href="{% url 'logistic' %}" class="btn btn-primary">Try it</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">KNN Classification</h5>
+                        <p class="card-text">Classify car fuel type using K-Nearest Neighbors.</p>
+                        <a href="{% url 'knn' %}" class="btn btn-primary">Try it</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,44 @@
+{% extends 'ml_app/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">KNN Classification - Car Fuel Type Prediction</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="feature_0" class="form-label">Engine Size (L)</label>
+                        <input type="number" step="any" class="form-control" id="feature_0" name="feature_0" required placeholder="Example: 2.0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="feature_1" class="form-label">Mileage (km/L)</label>
+                        <input type="number" step="any" class="form-control" id="feature_1" name="feature_1" required placeholder="Example: 15">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Predict</button>
+                    </div>
+                </form>
+
+                {% if prediction %}
+                <div class="alert alert-success mt-4">
+                    <h4 class="alert-heading">Prediction Result</h4>
+                    <p class="mb-0">Predicted Fuel Type: {{ prediction }}</p>
+                    <p class="mb-0">Confidence: {{ probability|floatformat:4 }}</p>
+                </div>
+                {% endif %}
+
+                {% if error %}
+                <div class="alert alert-danger mt-4">
+                    <h4 class="alert-heading">Error</h4>
+                    <p class="mb-0">{{ error }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,52 @@
+{% extends 'ml_app/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Logistic Regression - Diabetes Prediction</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="feature_0" class="form-label">Age</label>
+                        <input type="number" step="any" class="form-control" id="feature_0" name="feature_0" required placeholder="Example: 45">
+                    </div>
+                    <div class="mb-3">
+                        <label for="feature_1" class="form-label">BMI</label>
+                        <input type="number" step="any" class="form-control" id="feature_1" name="feature_1" required placeholder="Example: 25.0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="feature_2" class="form-label">Glucose Level (mg/dL)</label>
+                        <input type="number" step="any" class="form-control" id="feature_2" name="feature_2" required placeholder="Example: 120">
+                    </div>
+                    <div class="mb-3">
+                        <label for="feature_3" class="form-label">Blood Pressure (mmHg)</label>
+                        <input type="number" step="any" class="form-control" id="feature_3" name="feature_3" required placeholder="Example: 120">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Predict</button>
+                    </div>
+                </form>
+
+                {% if prediction %}
+                <div class="alert alert-success mt-4">
+                    <h4 class="alert-heading">Prediction Result</h4>
+                    <p class="mb-0">Prediction: {% if prediction == 1 %}Diabetic{% else %}Non-Diabetic{% endif %}</p>
+                    <p class="mb-0">Probability of Diabetes: {{ probability.1|floatformat:4 }}</p>
+                </div>
+                {% endif %}
+
+                {% if error %}
+                <div class="alert alert-danger mt-4">
+                    <h4 class="alert-heading">Error</h4>
+                    <p class="mb-0">{{ error }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
